@@ -6,6 +6,7 @@ import { Wrapper, List, Item, Image, Name, Character } from './Cast.styled';
 import { useRequest } from '../../services/useRequest';
 import defaultCastPoster from '../../images/default_cast.jpg';
 import propTypes from 'prop-types';
+import ErrorComponent from '../../components/Error';
 
 const castReducer = (state, action) => {
   switch (action.type) {
@@ -42,7 +43,7 @@ const Cast = () => {
 
   return (
     <>
-      {error && <h2>Something went wrong. Try again later.</h2>}
+      {error && <ErrorComponent />}
       {!data ? (
         <Wrapper>
           <SkeletonTheme baseColor="#dddddd" highlightColor="#a5a5a5">

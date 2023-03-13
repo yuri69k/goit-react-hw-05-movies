@@ -1,10 +1,10 @@
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
-import { Container, Header, Logo, Link,Title} from './SharedLayouts.styled';
+import { Container, Header, Logo, Link,Title} from './Navigation.styled';
 import { Loader } from '../Loader/Loader';
 import { GiFilmSpool } from 'react-icons/gi';
 
-export const SharedLayout = () => {
+export const Navigation = () => {
   
   return (
     <Container>

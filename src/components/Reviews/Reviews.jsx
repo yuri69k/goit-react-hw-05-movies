@@ -3,6 +3,8 @@ import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 import { Wrapper, List, Item, Author, Content } from './Reviews.styled';
 import { useRequest } from '../../services/useRequest';
+import ErrorComponent from '../../components/Error';
+
 
 const Reviews = () => {
   const { movieId } = useParams();
@@ -10,7 +12,7 @@ const Reviews = () => {
 
   return (
     <>
-      {error && <h2>Something went wrong. Try again later.</h2>}
+      {error && <ErrorComponent />}
       {!data ? (
         <SkeletonTheme baseColor="#dddddd" highlightColor="#a5a5a5">
           <Skeleton style={{ height: 30, width: 250, marginBottom: 15 }} />

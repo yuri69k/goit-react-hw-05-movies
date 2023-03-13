@@ -7,7 +7,7 @@ import { SearchBox } from 'components/SearchBox/SearchBox';
 import { MoviesList } from 'components/MoviesList/MoviesList';
 import { PageButtons } from 'components/Buttons/PageButtons';
 import { useRequest } from '../services/useRequest';
-
+import ErrorComponent from '../components/Error';
 const Movies = () => {
   const [page, setPage] = useState(1);
   const [searchParams, setSearchParams] = useSearchParams();
@@ -34,7 +34,7 @@ const Movies = () => {
         {!data && searchParams !== '' ? (
           <Skeleton count={15} style={{ height: 30, width: 300, marginTop: 15 }} />
         ) : data?.total_results === 0 && movieName && !error ? (
-          <h2>No results found</h2>
+          <ErrorComponent />
         ) : (
           <>
             <MoviesList movies={data.results} />
