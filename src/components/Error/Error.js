@@ -14,5 +14,5 @@ export default function ErrorComponent({ message }) {
 }
 
 ErrorComponent.propTypes = {
-  textError: PropTypes.string.isRequired,
+  textError: PropTypes.string,
 };
