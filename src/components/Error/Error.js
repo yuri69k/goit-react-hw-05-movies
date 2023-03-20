@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import errorImage from '../../images/no_results_found.png';
 import './Error.css';
+import { Link } from 'react-router-dom';
 
 export default function ErrorComponent({ message }) {
   return (
@@ -9,6 +10,9 @@ export default function ErrorComponent({ message }) {
       <p text={message} className="text">
         {message}
       </p>
+      <Link to="" className="button">
+        Open home page
+      </Link>
     </div>
   );
 }

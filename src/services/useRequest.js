@@ -15,7 +15,7 @@ export const useRequest = (path, page, query) => {
     : `${baseUrl}${path}?api_key=${apiKey}`;
 
   const { data, error } = useSwr(url);
-
+  console.log(data);
   return { data, error };
 };
 export const fetcher = async (...args) => {
