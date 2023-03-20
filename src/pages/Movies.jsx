@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback,useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
@@ -8,16 +8,20 @@ import { MoviesList } from 'components/MoviesList/MoviesList';
 import { PageButtons } from 'components/Buttons/PageButtons';
 import { useRequest } from '../services/useRequest';
 import ErrorComponent from '../components/Error';
+import debounce from 'lodash/debounce';
+
 const Movies = () => {
   const [page, setPage] = useState(1);
   const [searchParams, setSearchParams] = useSearchParams();
   const movieName = searchParams.get('query') || '';
   const { data, error } = useRequest('/search/movie', page, movieName || { query: '' });
 
-  const updateQueryString = query => {
+  const updateQueryString =useMemo(() => {
+    return debounce( query => {
     const nextParams = query !== '' && { query };
     setSearchParams(nextParams);
-  };
+  }, 500);
+  }, [setSearchParams]);
 
   const handlePageChange = useCallback(
     page => {

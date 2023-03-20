@@ -10,7 +10,7 @@ export default function ErrorComponent({ message }) {
       <p text={message} className="text">
         {message}
       </p>
-      <Link to="" className="button">
+      <Link to="" className="button" replace>
         Open home page
       </Link>
     </div>
